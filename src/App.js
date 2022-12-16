@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Header from "./components/Header";
+import Tasks from "./components/Tasks";
 
 function App() {
+  const [tasks, setTasks] = useState([
+    {
+      id: 1,
+      name: "meeting at projaro",
+      date: "today",
+      isCompleted: false,
+    },
+    {
+      id: 2,
+      name: "meeting with juliet",
+      date: "today",
+      isCompleted: false,
+    },
+    {
+      id: 3,
+      name: "meeting at oliser",
+      date: "today",
+      isCompleted: true,
+    },
+  ]);
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+  const completed = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
+      )
+    );
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>welcome to react</h1>
+      <Header title="task manager" text="add" />
+      <Tasks tasks={tasks} deleteTask={deleteTask} toggleDone={completed} />
     </div>
   );
 }
-
 export default App;
