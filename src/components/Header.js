@@ -5,10 +5,10 @@ const Header = ({ title, text }) => {
     console.log(name);
   };
   return (
-    <div>
-      {title}
-      <button onClick={() => nameOf(title)}>{text}</button>
-    </div>
+    <header className="header">
+      <h1> {title}</h1>
+      <button onClick={() => nameOf(title)} className='btn'>{text}</button>
+    </header>
   );
 };
 

@@ -35,9 +35,8 @@ function App() {
     );
   };
   return (
-    <div className="App">
-      <h1>welcome to react</h1>
-      <Header title="task manager" text="add" />
+    <div className="container">
+      <Header  title='task tracker' text={'add'}/>
       <Tasks tasks={tasks} deleteTask={deleteTask} toggleDone={completed} />
     </div>
   );
